@@ -7,7 +7,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "index.html"
+    "build": "npm run-script build"
   },
   "repository": {
     "type": "git",
