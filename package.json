@@ -2,12 +2,12 @@
   "name": "drum-machine",
   "version": "1.0.0",
   "description": "drum-machine",
-  "main": "app.js",
+  "main": "index.html",
   "dependencies": {},
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm run-script build"
+    "build": "index.html"
   },
   "repository": {
     "type": "git",
