@@ -4,6 +4,8 @@ const MINUTE = 60000;
 var bpm = 80;
 var currentBeat = 0;
 let audioContext;
+const dom = React.createElement;
+
 
 try {
   window.AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -17,8 +19,9 @@ try {
   document.getElementById('banana-spiral').className = '';
 }
 
-class Drum {
+class Drum  extends React.Component {
   constructor(name, sample) {
+    super(name, sample);
     this.context = audioContext;
     this.drumGain = audioContext.createGain();
     this.drumGain.gain.value = 0;
@@ -35,6 +38,7 @@ class Drum {
     sound.play();
     sound.muted = this.muted;
   }
+
 }
 
 function generateTable(drumList) {
@@ -118,7 +122,7 @@ function toggleTrigger(e, drum) {
   if (beatBox.className === 'off') {
     drum.playTriggers[beatBox.getAttribute('count-index')] = true;
     beatBox.className = 'on';
-    beatBox.style.background = randomColor();
+    beatBox.style.background = '#00eaff';
   } else {
     drum.playTriggers[beatBox.getAttribute('count-index')] = false;
     beatBox.className = 'off';
@@ -188,25 +192,29 @@ function handleTempoChange(e) {
 
 // PLAY THE MUSIC
 
-let snare = () => new Drum('Snare', 'Samples/snare-acoustic01.mp3');
-let hihat = () => new Drum('Hi-Hat', 'Samples/hihat-dist01.mp3');
+var snare = function() {
+  return new Drum('Snare', 'samples/snare-acoustic01.mp3');
+};
+
+var hihat = function() {
+  return new Drum('HiHat', 'samples/hihat-dist01.mp3');
+};
+
 
 var kick = function() {
-  return new Drum('Kick', 'Samples/kick-classic.mp3');
+  return new Drum('Kick', 'samples/kick-classic.mp3');
 };
 
 var tom1 = function() {
-  return new Drum('Tom (1)', 'Samples/tom-acoustic01.mp3');
+  return new Drum('LoTom', 'Samples/tom-acoustic01.mp3');
 };
 
 var tom2 = function() {
-  return new Drum('Tom (2)', 'Samples/tom-acoustic02.mp3');
+  return new Drum('HiTom', 'Samples/tom-acoustic02.mp3');
 };
 
 var crash = function() {
-  return new Drum(
-    'Crash',
-    'electro-flux-sound-kit/Electro Flux Sound Kit/Percussion (2)/ED Crash/ED Crash 09.wav'
+  return new Drum('Crash','electro-flux-sound-kit/Electro Flux Sound Kit/Percussion (2)/ED Crash/ED Crash 09.wav'
   );
 };
 
@@ -311,7 +319,7 @@ function switchToOption2() {
 }
 d2.addEventListener('click', switchToOption2);
 
-// adding track
+ //adding track
 
 var d3 = document.getElementById('d3');
 function switchToOption3() {
@@ -388,6 +396,7 @@ function checkForDrum(drumList, drum) {
   return -1;
 }
 
+
 generateTable(allDrums);
 
 var playingInterval = setInterval(playBeat, MINUTE / (bpm * 4));
@@ -413,7 +422,7 @@ function playBeat() {
   var allBoxes = document.querySelectorAll('#grid-beat td');
   for (i = 0; i < allBoxes.length; i++) {
     if (allBoxes[i].getAttribute('count-index') == currentBeat) {
-      allBoxes[i].style.borderColor = '#FFDB42';
+      allBoxes[i].style.borderColor = '#a8fffd';
     } else if (allBoxes[i].className != 'drum-label') {
       allBoxes[i].style.borderColor = '#1e1e1e';
     }
@@ -421,10 +430,7 @@ function playBeat() {
   currentBeat++;
   currentBeat %= 16;
 
-  document.getElementById('banana-beat').src =
-    'banana/banana' + bananas[currentBanana];
-  currentBanana++;
-  currentBanana %= 8;
+
 }
 
 // SAVING TO LOCALSTORAGE FUNCTIONALITY

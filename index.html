@@ -1,17 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Banana Beat</title>
-  <meta property="og:image" content="https://s3.us-east-2.amazonaws.com/portfolio-joshua/Screen+Shot+2017-11-08+at+2.25.21+PM.png" />
-  <link rel="icon" href="http://rs824.pbsrc.com/albums/zz164/Vinnie2020/Smiley24.gif~c200">
-  <link rel="icon" href="img/banana-drums.gif">
+  <title>Painted Beats</title>
   <link href="https://fonts.googleapis.com/css?family=Comfortaa:400,700|Poppins:300,400" rel="stylesheet">
 
   <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
   <aside>
-    <img id="banana-beat" src="banana/banana7.png" alt="dancing banana"/>
     <section id="tempo-change">
       <input id="tempo-value" type="number" name="tempoValueInput" min="20" max="200" />bpm
       <input id="tempo-slider" type="range" name="tempoSliderInput" min="20" max="200" step="5" />
@@ -93,9 +89,7 @@
       <button id="clear-saves">Clear All Saved Data</button>
     </section> <!-- end saved-states -->
 
-    <footer>
-      <a href="aboutus.html">Meet the Team</a>
-    </footer>
+
   </aside>
 
   <main>
@@ -114,8 +108,8 @@
       </div> <!-- end piano-box -->
     </section> <!-- end entire-piano -->
   </main>
-
-
+<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
   <script src='app.js'></script>
 </body>
 </html>
